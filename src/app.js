@@ -28,7 +28,7 @@ const initServer = async (httpServer) => {
     io.adapter(adapter);
 
     io.of(`/`).on("connection", (socket) => {
-        io.emit(appConfigs.defaultEvent, `hello ${socket.id} from Server: ${uuid}`);
+        io.emit(appConfigs.defaultEvent, { socketId: socket.id, serverName: uuid });
     });
 };
 
